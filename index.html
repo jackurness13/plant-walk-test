@@ -1,1 +1,81 @@
-﻿placeholder
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#15171a">
+  <meta name="description" content="Plant Walk: a 5-minute energy assessment challenge from the University of Utah U-CREW.">
+  <title>Plant Walk: U-CREW Energy Assessment Challenge</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23CC0000'/%3E%3Cpath d='M36 6 16 36h14l-4 22 22-32H34z' fill='white'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- ============ TITLE ============ -->
+  <section id="screen-title" class="screen active" aria-labelledby="title-h">
+    <div class="title-wrap">
+      <div class="brand">University of Utah · U-CREW</div>
+      <div class="logo" aria-hidden="true">
+        <svg viewBox="0 0 120 120">
+          <circle cx="60" cy="60" r="54" fill="#1f2328" stroke="#CC0000" stroke-width="6"/>
+          <path d="M22 74 A40 40 0 0 1 98 74" fill="none" stroke="#3a4048" stroke-width="10" stroke-linecap="round"/>
+          <path d="M22 74 A40 40 0 0 1 60 34" fill="none" stroke="#35c46a" stroke-width="10" stroke-linecap="round"/>
+          <path d="M66 22 44 62h14l-6 30 26-42H62z" fill="#fff"/>
+        </svg>
+      </div>
+      <h1 id="title-h"><span>Plant</span> <span class="red">Walk</span></h1>
+      <p class="subtitle">U-CREW Energy Assessment Challenge</p>
+      <button id="btn-start" class="btn btn-primary btn-xl">Start Assessment</button>
+      <div class="howto card">
+        <h2>How to Play</h2>
+        <ul>
+          <li><b>5:00 on the clock.</b> Drag to walk the plant and tap equipment that's wasting energy.</li>
+          <li><b>Take a reading</b> on each find to build an Assessment Recommendation — its $/yr adds to your score.</li>
+          <li><b>Watch for decoys:</b> efficient equipment costs you 10 s. A hint shows a zone with a missed find (−20 s).</li>
+        </ul>
+      </div>
+      <button id="btn-leaderboard" class="btn btn-ghost">🏆 Leaderboard</button>
+    </div>
+  </section>
+
+  <!-- ============ GAME ============ -->
+  <section id="screen-game" class="screen" aria-label="Plant floor">
+    <header class="hud">
+      <div class="hud-row">
+        <div class="stat stat-time"><span class="lbl">Time</span><span id="timer" class="val">5:00</span></div>
+        <div class="stat stat-money"><span class="lbl">Savings / yr</span><span id="ticker" class="val">$0</span></div>
+        <div class="stat stat-finds"><span class="lbl">Finds</span><span id="finds" class="val">0/8</span></div>
+      </div>
+      <div class="hud-row hud-actions">
+        <button id="btn-hint" class="btn btn-small btn-hint">💡 Hint <span class="cost">−20s</span></button>
+        <button id="btn-mute" class="btn btn-small btn-icon" aria-label="Mute sound"></button>
+        <button id="btn-finish" class="btn btn-small btn-ghost">End Walk</button>
+      </div>
+      <div id="penalty" class="penalty" aria-live="polite"></div>
+    </header>
+    <div id="map" class="map" tabindex="-1"><div id="map-inner" class="map-inner"></div></div>
+    <nav class="zone-nav" aria-label="Jump to zone">
+      <button data-zone="compressor">Compressor</button>
+      <button data-zone="boiler">Boiler</button>
+      <button data-zone="production">Production</button>
+      <button data-zone="warehouse">Warehouse</button>
+    </nav>
+  </section>
+
+  <!-- ============ END ============ -->
+  <section id="screen-end" class="screen" aria-label="Results">
+    <div id="end-content" class="end-wrap"></div>
+  </section>
+
+  <!-- ============ MODAL / TOAST / FX ============ -->
+  <div id="modal" class="modal" hidden>
+    <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div id="modal-body"></div>
+    </div>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <canvas id="confetti" aria-hidden="true"></canvas>
+  <div id="print-report" class="print-report"></div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

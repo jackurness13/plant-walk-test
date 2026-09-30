@@ -1,0 +1,15 @@
+{
+  "name": "plant-walk",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Plant Walk: U-CREW Energy Assessment Challenge",
+  "scripts": {
+    "test:calc": "node tests/calc.test.mjs",
+    "test:e2e": "node tests/e2e.mjs",
+    "test": "npm run test:calc && npm run test:e2e"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0"
+  }
+}
